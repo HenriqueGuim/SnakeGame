@@ -33,13 +33,18 @@ public class Snake {
     }
 
     public void move(Direction direction) {
-        this.direction = direction;
+        if(direction == Direction.UP && this.direction ==Direction.DOWN){} else if
+        (direction == Direction.DOWN && this.direction ==Direction.UP) {} else if
+        (direction == Direction.LEFT && this.direction ==Direction.RIGHT) {} else if
+        (direction == Direction.RIGHT && this.direction ==Direction.LEFT) {}else {
+            this.direction = direction;
+        }
 
         int headRow = getHead().getCol();
         int headCol = getHead().getRow();
 
-        int directionRow = direction.getPosition()[0];
-        int directionCol = direction.getPosition()[1];
+        int directionRow = this.direction.getPosition()[0];
+        int directionCol = this.direction.getPosition()[1];
 
         snakeBody.addFirst(new Position(new int[]{headRow+directionRow, headCol+directionCol}));
         snakeBody.remove(getTail());
@@ -73,6 +78,10 @@ public class Snake {
 
     public int getSnakeSize() {
         return snakeBody.size();
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 }
 
